@@ -1,18 +1,15 @@
-import styled from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 import Home from './screens/Home';
+import Example from './componets/TabCanva';
 
 function App() {
   return (
     <>
+      {/* <Example/> */}
       <Home/>
     </>
   ); 
 }
-const Main =styled.div`
-  text-align: center;
-`
-const WrongText = styled.span`
-  text-decoration: line-through;
-  color: red;
-`
+
 export default App;

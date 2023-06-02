@@ -4,31 +4,46 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AppNavbar from '../componets/Navbar';
+import HeadCanva from '../componets/TabCanva';
+import BodyCanva from '../componets/BodyCanva';
 
 // Styled Components
+const TabBoard = styled.div`
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 25px 0;
+`;
+
+const TabBody = styled.div`
+`;
+
 const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 400px;
-  border: 1px solid #ccc;
+  height: 80vh;
   padding: 20px;
   overflow-y: auto;
 `;
 
 const MessageBubble = styled.div`
   display: inline-block;
-  background-color: #f0f0f0;
-  padding: 10px;
+  background-color: #B9F6CA;
+  padding: 10px 20px ;
+  margin-left: 70px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 20px 0 20px 20px;
 `;
 
 const ChatInput = styled.input`
-  padding: 10px;
-  margin: 10px;
-  width: 95%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 70vw;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 `;
 
 // Chat Component
@@ -55,29 +70,30 @@ const Home = () => {
     };
 
     return (
-        <Container >
+        <Container fluid >
             <Row>
-                <AppNavbar/>
-            </Row>
-            <Row>
-                <Col md={8}>
-                    <ul>
-                        <li>hyyftu</li>
-                    </ul>
+                <Col md={3}>
+                    <TabBoard>
+                        <HeadCanva/>
+                        <TabBody>
+                            <BodyCanva/>
+                        </TabBody>
+                    </TabBoard>
                 </Col>
-                <Col md={4}>
-                <ChatContainer>
-                    {messages.map((message, index) => (
-                        <MessageBubble key={index}>{message.text}</MessageBubble>
-                    ))}
-                </ChatContainer>
-                <ChatInput
-                    type="text"
-                    placeholder="Type your message..."
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    onKeyPress={handleKeyPress}
-                />
+                <Col md={9}>
+                    <AppNavbar />
+                    <ChatContainer>
+                        {messages.map((message, index) => (
+                            <MessageBubble key={index}>{message.text}</MessageBubble>
+                        ))}
+                    </ChatContainer>
+                    <ChatInput
+                        type="text"
+                        placeholder="Type your message..."
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        onKeyPress={handleKeyPress}
+                    />
                 </Col>
             </Row>
         </Container>
